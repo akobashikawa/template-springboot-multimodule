@@ -14,14 +14,18 @@
 Para replicar el template y crear un nuevo servicio, utiliza el script automatizado:
 
 ```bash
+# Uso por defecto (basado en template-simple)
 ./scripts/new-module.sh nombre-del-modulo
+
+# Uso especificando un template base diferente
+./scripts/new-module.sh nombre-del-modulo nombre-del-template
 ```
 
 - El script se encargará de:
-1. Clonar template-simple.
-2. Renombrar el artifactId y el name en el `pom.xml`.
-3. Configurar el `spring.application.name` en el archivo de propiedades.
-4. (Opcional) Registrar el módulo en el POM agregador raíz.
+1. El clonado del template elegido (por defecto template-simple).
+2. El renombrado del artifactId y el name en el pom.xml.
+3. La configuración del spring.application.name en los archivos de propiedades.
+4. El registro automático del nuevo módulo en el pom.xml agregador de la raíz.
 
 ## 📈 Versiones
 - El proyecto utiliza filtrado de recursos de Maven para sincronizar la versión del pom.xml con la aplicación:
@@ -44,21 +48,25 @@ mvn clean compile
 - Para levantar un módulo con el perfil local activo y ver el banner personalizado:
 
 ```sh
+# Ejecución estándar
 mvn spring-boot:run -Dspring-boot.run.profiles=local -pl nombre-del-modulo
+
+# Ejecución rápida saltando tests
 mvn -Dmaven.test.skip=true spring-boot:run -Dspring-boot.run.profiles=local -pl nombre-del-modulo
 ```
 
 ## 🛠️ Build
+- Comandos útiles para empaquetar módulos individuales desde la raíz:
 ```sh
- mvn install -pl template-simple
- mvn clean install -pl template-simple
- mvn clean package -pl template-simple
- mvn -DskipTests clean package -pl template-simple
- mvn -Dmaven.test.skip=true clean package -pl template-simple
+# Instalar en el repositorio local
+mvn clean install -pl nombre-del-modulo
+
+# Generar el JAR ejecutable saltando tests
+mvn -DskipTests clean package -pl nombre-del-modulo
 ```
 
 ## 🐳 Notas de Despliegue
 - Al generar el JAR, puedes sobrescribir la versión en tiempo de ejecución sin recompilar usando variables de entorno:
 ```sh
-export APP_VERSION=260312-custom && java -jar app.jar
+export APP_VERSION=260312-custom && java -jar target/nombre-del-modulo.jar
 ```
