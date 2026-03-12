@@ -1,0 +1,7 @@
+spring:
+    application:
+        name: simple
+        version: "${APP_VERSION:@project.version@}"
+        env-name: ""
+    profiles:
+        active: "${SPRING_DEFAULT_PROFILE:local}"

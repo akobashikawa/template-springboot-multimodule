@@ -1,0 +1,50 @@
+### --- JAVA & SPRING BOOT ---
+# Compilados y empaquetados
+**/target/
+**/build/
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs de la aplicación
+*.log
+logs/
+temp/
+
+### --- MAVEN & GRADLE ---
+# Wrapper de Maven/Gradle (opcional: algunos prefieren subirlo, otros no)
+# .mvn/wrapper/maven-wrapper.jar
+# .gradle/
+# build/
+
+### --- IDEs (Entornos de Desarrollo) ---
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+bin/
+.project
+.classpath
+.settings/
+
+### --- SISTEMA OPERATIVO ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+### --- CONFIGURACIÓN Y SECRETOS ---
+# Archivos de propiedades locales (¡Muy importante!)
+**/src/main/resources/application-local.yml
+**/src/main/resources/application-local.properties
+.env
+.env.local
+
+### --- DOCKER & INFRAESTRUCTURA ---
+# Si usas bases de datos locales con Docker, ignora los datos persistidos
+docker/data/
