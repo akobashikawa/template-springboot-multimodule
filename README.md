@@ -65,8 +65,18 @@ mvn clean install -pl nombre-del-modulo
 mvn -DskipTests clean package -pl nombre-del-modulo
 ```
 
-## 🐳 Notas de Despliegue
+## 🧙‍♂️ Notas de Despliegue
 - Al generar el JAR, puedes sobrescribir la versión en tiempo de ejecución sin recompilar usando variables de entorno:
 ```sh
 export APP_VERSION=260312-custom && java -jar target/nombre-del-modulo.jar
 ```
+
+## 🐳 Docker
+Para construir la imagen usando el versionado automático:
+```sh
+# Desde la carpeta del módulo
+VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+docker build -t nombre-del-modulo:$VERSION .
+
+# Para ejecutar con configuración externa
+docker run -p 8080:8080 -v $(pwd)/config:/app/config nombre-del-modulo:$VERSION
