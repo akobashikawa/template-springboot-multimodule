@@ -10,6 +10,12 @@
 - **Versionado CalVer:** Uso de fechas (`YYMMDD-SemVer`) para una trazabilidad clara en despliegues y contenedores.
 - **Configuración Externa:** Prioridad de carga diseñada para facilitar el despliegue sin modificar el artefacto (JAR).
 
+## 🛠️ Inicio Rápido desde GitHub
+1. Haz clic en **"Use this template"**.
+2. Una vez creado tu nuevo repo, clónalo localmente.
+3. Ejecuta `./scripts/new-module.sh mi-nuevo-servicio`.
+4. ¡A programar!
+
 ## 🚀 Crear Nuevo Módulo
 Para replicar el template y crear un nuevo servicio, utiliza el script automatizado:
 
@@ -80,3 +86,4 @@ docker build -t nombre-del-modulo:$VERSION .
 
 # Para ejecutar con configuración externa
 docker run -p 8080:8080 -v $(pwd)/config:/app/config nombre-del-modulo:$VERSION
+
